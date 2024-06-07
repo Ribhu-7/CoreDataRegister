@@ -157,7 +157,7 @@ extension ViewController: UITextFieldDelegate {
             let row = educationList.allCases.firstIndex(where: { (edc) -> Bool in
                 edc.rawValue == self.education.text
             })
-            
+    
             if let row = row {
                 pickerView.selectRow(row, inComponent: 0, animated: true)
             }
