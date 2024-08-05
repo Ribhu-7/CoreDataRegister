@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 enum educationList: String, CaseIterable{
     case pg = "Post Graduate"
@@ -49,8 +50,10 @@ class RegisterViewController: UIViewController {
         return toolbar
     }()
     
-    
-    
+    var user: UserEntity?
+    let manager = DatabaseManager()
+    var imageSelectedByUser: Bool = false
+    var genderVal: String!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -68,14 +71,17 @@ class RegisterViewController: UIViewController {
         btnFemale.setImage(UIImage.init(named: "radio"), for: .selected)
         
         phoneNumber.keyboardType = .numberPad
-        profileImgView.layer.cornerRadius = profileImgView.frame.size.height/2
+        
+        
         
         setUpPickerView()
         setUpTextField()
         createDatePicker()
+        addGesture()
     }
     
     //creating date picker
+    
     func createDatePicker(){
         datePicker.preferredDatePickerStyle = .wheels
         
@@ -128,9 +134,11 @@ class RegisterViewController: UIViewController {
         if sender === btnMale{
             btnMale.isSelected = true
             btnFemale.isSelected = false
+            genderVal = "Male"
         } else if sender === btnFemale{
             btnFemale.isSelected = true
             btnMale.isSelected = false
+            genderVal = "Female"
         }
     }
     
@@ -146,6 +154,7 @@ class RegisterViewController: UIViewController {
             alert.addAction(action)
             self.present(alert,animated: true,completion: nil)
         } else{
+            configuration()
             print("All valid")
         }
         
