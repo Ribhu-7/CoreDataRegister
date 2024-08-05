@@ -52,7 +52,7 @@ extension RegisterViewController: PHPickerViewControllerDelegate {
         
         
         let imageName = UUID().uuidString
-        var newUser = UserModel(firstName: firstName, lastName: lastName, email: email, password: password ,imageName: imageName , dob: dob , phoneNumber: phoneNumber , education: education , gender: genderVal)
+        let newUser = UserModel(firstName: firstName, lastName: lastName, email: email, password: password ,imageName: imageName , dob: dob , phoneNumber: phoneNumber , education: education , gender: genderVal)
         saveImagetoDocumentDirectory(imageName: imageName)
         manager.addUser(newUser)
         self.navigationController?.popViewController(animated: true)
