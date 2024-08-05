@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension ViewController: UIPickerViewDelegate,UIPickerViewDataSource{
+extension RegisterViewController: UIPickerViewDelegate,UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return educationList.allCases[row].rawValue
     }

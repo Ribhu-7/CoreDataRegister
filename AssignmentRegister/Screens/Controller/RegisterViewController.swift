@@ -14,7 +14,9 @@ enum educationList: String, CaseIterable{
     case ssc = "SSC"
 }
 
-class ViewController: UIViewController {
+class RegisterViewController: UIViewController {
+    
+    @IBOutlet weak var profileImgView: UIImageView!
     
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -66,6 +68,7 @@ class ViewController: UIViewController {
         btnFemale.setImage(UIImage.init(named: "radio"), for: .selected)
         
         phoneNumber.keyboardType = .numberPad
+        profileImgView.layer.cornerRadius = profileImgView.frame.size.height/2
         
         setUpPickerView()
         setUpTextField()
@@ -150,7 +153,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITextFieldDelegate {
+extension RegisterViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == self.education {
             // Select the value in the picker from the text in the textField
